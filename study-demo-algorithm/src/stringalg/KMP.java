@@ -54,9 +54,7 @@ public class KMP {
     }
 
     /**
-     * @description:
-     * ts:dabxabxababxabwabxad ps:abxabwabxad next=[0, 0, 0, 1, 2, 0, 1, 2, 3, 4, 0]
-     *
+     * @description: ts:dabxabxababxabwabxad ps:abxabwabxad next=[0, 0, 0, 1, 2, 0, 1, 2, 3, 4, 0]
      * @author wdy
      * @date 2021/7/24 20:23
      */
@@ -66,16 +64,16 @@ public class KMP {
         char[] psarray = ps.toCharArray();
         int[] nexts = getKmpNext(ps);
         System.out.println(Arrays.toString(nexts));
-        int t_idx=0;
-        int p_idx=0;
+        int t_idx = 0;
+        int p_idx = 0;
         while (t_idx < tsarray.length && p_idx < psarray.length) {
-            if(tsarray[t_idx]==psarray[p_idx]){
+            if (tsarray[t_idx] == psarray[p_idx]) {
                 p_idx++;
-            }else{
-                if(p_idx>0)
-                    p_idx=nexts[p_idx-1];
+            } else {
+                if (p_idx > 0)
+                    p_idx = nexts[p_idx - 1];
             }
-            if(p_idx==psarray.length) return t_idx-p_idx+1;
+            if (p_idx == psarray.length) return t_idx - p_idx + 1;
             t_idx++;
         }
         return -1;
