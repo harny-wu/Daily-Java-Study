@@ -30,6 +30,7 @@ public class LazyDualCheckSyncSingleton {
     public static LazyDualCheckSyncSingleton getInstance() {
         if (instance == null){
             synchronized (LazyDualCheckSyncSingleton.class) {
+                // 双重校验 + volatile 保障可见性
                 if (instance == null) {
                     instance = new LazyDualCheckSyncSingleton();
                 }
